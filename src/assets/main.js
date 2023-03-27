@@ -1,12 +1,12 @@
-const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCgFvT6pUq9HLOvKBYERzXSQ&part=snippet%2Cid&order=date&maxResults=10'
+const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCSM3FVwdCIJfU0OdjKZb94A&part=snippet%2Cid&order=date&maxResults=9'
 
 const content = null || document.getElementById('content');
 
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
-		'X-RapidAPI-Key': 'bd82325e19msh666e08229e0ec1cp1b07d5jsn151b0a974bb7'
+		'X-RapidAPI-Key': 'bd82325e19msh666e08229e0ec1cp1b07d5jsn151b0a974bb7',
+		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
 	}
 };
 
@@ -24,7 +24,7 @@ async function fetchData( urlApi ) {
             <div class="group relative">
               <div
                 class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
-                <img src="${video.snippet.thumbnail.high.url}" alt="${video.snippet.description}" class="w-full">
+                <img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.description}" class="w-full">
               </div>
               <div class="mt-4 flex justify-between">
                 <h3 class="text-sm text-gray-700">
@@ -36,7 +36,8 @@ async function fetchData( urlApi ) {
         `).slice(0,4).join('')}
          
         `;
-    }catch{
-
+      content.innerHTML = view;
+    }catch(error){
+        console.log(error);
     }
 })();
